@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лендинг с умным помощником</title>
+
+  <style>
+    body {
+        background-image: url("img0983.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      
+  }
+    .page-box {
+      max-width: 620px;
+      margin: 40px auto;
+      background: #FF9500;
+      border-radius: 14px;
+      padding: 30px;
+      color: #fff;
+  }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+    .chat-box {
+      margin-bottom: 20px;
+      background: #fff;
+      color: #000;
+      padding: 20px;
+      border-radius: 10px;
+      box-sizing: border-box;
+  }
+    .chat-box input,
+    .chat-box button {
+       width: 100%;
+       box-sizing: border-box;
+  }
+
+    #chat {
+      min-height: 80px;
+      margin-bottom: 15px;
+      color: #000;
+  }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #fff;
+      color: #000;
+      border: 1px solid #ccc;
+  }
+
+    button {
+      padding: 12px;
+      background: #FF9500;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+  }
+   footer {
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.9;
+  }
+    a {
+        color: #00ccff;
+  }
+      
+   
+  </style>
+
+</head>
+
+<body>
+ <div class="page-box">
+
+    <section class="hero">
+     <h1>Прийом замовлення на доставку</h1>
+     <p>Будь ласка, дайте відповідь на запитання</p>
+   
+    </section>
+
+    <section class="chat-box">
+    <div id="chat"></div>
+
+    <input 
+      id="userInput"
+      type="text"
+      placeholder="Enter your answer…" />
+
+    <button id="nextBtn" type="button">Next</button>
+
+    <form id="consultation-form">
+     <div class="form-message"></div>
+    </form>
+    </section>
+    <footer>
+    Після відповідей - автоматичний перехід у меню, для завершення замовлення. 
+    
+   </footer>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+// ===== ВОПРОСЫ =====
+const questions = [
+  "Як до вас звертатися",
+  "Введіть номер телефону",
+  "Введить адресу доставки",
+  "Як бажаєте оплатити замовлення (готівкою, карткою)"
+];
+
+// ===== ЛОГИКА =====
+let step = 0;
+let answers = [];
+
+const chat = document.getElementById("chat");
+const input = document.getElementById("userInput");
+const nextBtn = document.getElementById("nextBtn");
+
+
+
+// Показываем первый вопрос
+function showQuestion() {
+  chat.innerHTML += `<div class="bot"><strong>${questions[step]}</strong></div>`;
+ 
+}
+
+// Следующий шаг
+ async function nextStep() {
+   const answer = input.value.trim();
+  if (!answer) {
+    alert("Будь ласка, введіть відповідь");
+    return;
+  }
+
+  
+  answers.push(answer);
+  input.value = "";
+
+  if (step < questions.length - 1) {
+    step++;
+    showQuestion();
+  } else {
+    chat.innerHTML += `<div class="bot">Дякую! Виберіть пицу и чекайте. Oплата під час отримання. 👍</div>`;
+    input.style.display = "none";
+    nextBtn.style.display = "none";
+    await sendToWorker();
+
+    localStorage.setItem("goToMenu", "1");
+    localStorage.setItem("orderType", "Delivery");
+
+    setTimeout(() => {
+      window.location.href = "pizza hous.html";
+    }, 2500);
+  }
+ }  
+
+//==== Отправка в TELEGRAM WORKER ====
+async function sendToWorker() {
+  const text = answers.join("\n");
+
+  try {
+    await fetch("https://my-worker.andreyodr33.workers.dev", {
+       method: "POST",
+       headers: {"Content-Type": "application/json" },
+       body: JSON.stringify({ text })
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+  nextBtn.addEventListener("click", nextStep);
+  showQuestion();
+  });
+
+   </script>
+
+   </body>
+  </html>
+
+
