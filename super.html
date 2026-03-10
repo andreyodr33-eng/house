@@ -78,7 +78,13 @@
     a {
         color: #00ccff;
   }
-      
+ /* Адаптация под экран телефона */
+@media (max-width: 480px) {
+  #consultation-form {
+    padding: 15px;
+    max-width: 90%;
+  }
+}     
    
   </style>
 
@@ -192,6 +198,7 @@ async function sendToWorker() {
 
    </body>
   </html>
+
 
 
 
