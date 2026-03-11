@@ -191,9 +191,17 @@
  .desc { 
     font-size: 11px;
     line-height: 1.2;
-    wite-space: normal;
-    word-wrap: break-word;
- }
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+     overflow: hidden;
+ } 
+  .card img {
+      width: 100%
+      height: 140px;
+      object-fit: cover;
+  }
  
 
     /* ===== RESPONSIVE ===== */
@@ -575,6 +583,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
