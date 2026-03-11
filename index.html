@@ -568,35 +568,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
-<script>
-window.addEventListener("load", function () {
-
-  if (localStorage.getItem("goToMenu") === "1") {
-
-    localStorage.removeItem("goToMenu");
-
-    const menu = document.getElementById("menu");
-
-    if (menu) {
-
-      const y =
-        menu.getBoundingClientRect().top +
-        window.pageYOffset -
-        10;
-
-      window.scrollTo({
-        top: y,
-        behavior: "smooth"
-      });
-
-    }
-  }
-
-});
-</script>
 
 </body>
 </html>
+
 
 
 
