@@ -466,36 +466,66 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+const backupMenu = [
+  {
+    name: "Coffe",
+    price: "3.00",
+    img: "IMG_1010.JPG"
+  },
+  {
+    name: "Soda",
+    price: "1.00",
+    img: "IMG_1012.JPG"
+  },
+  {
+    name: "Calzone",
+    price: "12.50",
+    img: "IMG_1006.JPG"
+  },
+  {
+    name: "Capricciosa",
+    price: "13.00",
+    img: "IMG_1007.JPG"
+  }
+];
 
+document.addEventListener('DOMContentLoaded', function () {
   const menuContainer = document.querySelector('.menu');
   if (!menuContainer) return;
 
-  fetch('https://opensheet.elk.sh/1PAi1zXz-S8jXxkUJHSeR22rrm6eyjjIkks_kyZ0vSgY/PizzaMenu')
+  const sheetUrl = 'https://opensheet.elk.sh/1PAi1zXz-S8jXxkUJHSeR22rrm6eyjjIkks_kyZ0vSgY/PizzaMenu';
+
+  fetch(sheetUrl)
     .then(res => res.json())
     .then(menu => {
-
-      menuContainer.innerHTML = '';
-
-      menu.forEach(dish => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <img src="${dish.img}" alt="${dish.name}">
-          <h3>${dish.name}</h3>
-          <p>€${dish.price}</p>
-          <button onclick="sendOrder('${dish.name}', '${dish.price}')">
-            Заказать
-          </button>
-        `;
-        menuContainer.appendChild(card);
-      });
-
+      if (!Array.isArray(menu)) throw new Error("Invalid menu format");
+      renderMenu(menu);
     })
-    .catch(err => console.error('Ошибка загрузки:', err));
+    .catch(err => {
+      console.warn("Google Sheets недоступны, используется резервное меню");
+      renderMenu(backupMenu);
+    });
 
+  function renderMenu(menu) {
+    menuContainer.innerHTML = '';
+    menu.forEach(dish => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${dish.img}" alt="${dish.name}">
+        <h3>${dish.name}</h3>
+        <p>€${dish.price}</p>
+        <button onclick="sendOrder('${dish.name}', '${dish.price}')">
+          Заказать
+        </button>
+      `;
+      menuContainer.appendChild(card);
+    });
+  }
 });
+
 </script>
+
 
 <script>
 
@@ -541,6 +571,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
