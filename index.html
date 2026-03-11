@@ -296,7 +296,7 @@
 </section>
     
 
-<section class="menu" id="menu"></section>   
+<section class="menu"></section>   
     
 
 </main>
@@ -520,25 +520,12 @@ document.addEventListener('DOMContentLoaded', function () {
         </button>
       `;
       menuContainer.appendChild(card);
-    });
-  ✅ прокрутка после отрисовки меню
-  if (localStorage.getItem("goToMenu") === "1") {
-
-    localStorage.removeItem("goToMenu");
-
-    const menuBlock = document.getElementById("menu");
-
-    if (menuBlock) {
-      const y = menuBlock.offsetTop - 10;
-
-      window.scrollTo({
-        top: y,
-        behavior: "smooth"
+    
       });
     }
 
-  }
-}
+  });
+
 
 </script>
 
@@ -587,6 +574,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
