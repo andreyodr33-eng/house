@@ -188,6 +188,10 @@
 .map-btn:hover {
   opacity: 0.9;
 }
+ .desc { 
+    font-size: 11px;
+    line-height: 1.2;
+ }
  
 
     /* ===== RESPONSIVE ===== */
@@ -278,17 +282,7 @@
   </div>
 </div>
   <section class="about">
-  <p><strong>Our Specialties:</strong></p>
-  <p>
-    Margherita (tomato sauce, mozzarella, fresh basil)
-    Pepperoni (tomato sauce, mozzarella, spicy pepperoni)
-    Four Cheese (mozzarella, parmesan, emmental, gorgonzola)
-    Veggie (bell pepper, mushrooms, spinach, tomatoes, olives, onion)
-    Calzone (mozzarella, tomato sauce, minced beef, ham)
-    Capricciosa (tomato sauce, mozzarella, ham, mushrooms, artichokes, olives)
-  </p>
-
-  <p>
+<p>
     We prepare our pizzas using fresh, eco-friendly ingredients.
     During the season, we cook our tomato sauce ourselves using a family recipe.
     We truly value our loyal customers.
@@ -469,21 +463,25 @@ document.addEventListener("DOMContentLoaded", function () {
 const backupMenu = [
   {
     name: "Coffe",
+    desc: "arabica",
     price: "3.00",
     img: "IMG_1010.JPG"
   },
   {
     name: "Soda",
+    desc: "cola / fanta / sprite"
     price: "1.00",
     img: "IMG_1012.JPG"
   },
   {
     name: "Calzone",
+    desc: "mozzarella, tomato, ham"  
     price: "12.50",
     img: "IMG_1006.JPG"
   },
   {
     name: "Capricciosa",
+    desc: "mozzarella, tomato, ham"   
     price: "13.00",
     img: "IMG_1007.JPG"
   }
@@ -514,6 +512,7 @@ document.addEventListener('DOMContentLoaded', function () {
       card.innerHTML = `
         <img src="${dish.img}" alt="${dish.name}">
         <h3>${dish.name}</h3>
+        <p class="desc">${dish.desc || ""}</p>
         <p>€${dish.price}</p>
         <button onclick="sendOrder('${dish.name}', '${dish.price}')">
           Заказать
@@ -574,6 +573,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
