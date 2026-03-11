@@ -135,11 +135,13 @@
       padding: 15px;
       text-align: center;
       border-radius: 6px;
+      box-sizing: border-box;
     }
 
     .card img {
       width: 100%;
       height: auto;
+      max-width: 100%;
       object-fit: contain;
       border-radius: 4px;
     }
@@ -217,6 +219,10 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+   }
   </style>
 </head>
 <body>
@@ -579,6 +585,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
