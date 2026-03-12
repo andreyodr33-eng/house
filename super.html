@@ -6,80 +6,109 @@
   <title>Лендинг с умным помощником</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      
-  }
-     .page-box {
-      max-width: 620px;
-      margin: 40px auto;
-      background: #FF9500;
-      border-radius: 14px;
-      padding: 30px;
-      color: #fff;
-  }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 20px;
-  }
+* {
+  box-sizing: border-box;
+}
 
-    .chat-box {
-      margin-bottom: 20px;
-      background: #fff;
-      color: #000;
-      padding: 20px;
-      border-radius: 10px;
-      box-sizing: border-box;
-  }
-    .chat-box input,
-    .chat-box button {
-       width: 100%;
-       box-sizing: border-box;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
-    #chat {
-      min-height: 80px;
-      margin-bottom: 15px;
-      color: #000;
-  }
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: Arial, sans-serif;
 
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      background: #fff;
-      color: #000;
-      border: 1px solid #ccc;
-  }
+  min-height: 100vh;
+  min-height: 100dvh; /* важно для iPhone */
 
-    button {
-      padding: 12px;
-      background: #FF9500;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-  }
-   footer {
-      text-align: center;
-      font-size: 14px;
-      opacity: 0.9;
-  }
-    a {
-        color: #00ccff;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
 
-   
-  </style>
+
+/* ===== ГЛАВНЫЙ КОНТЕЙНЕР ===== */
+
+.page-box {
+  max-width: 620px;
+  width: 100%;
+
+  background: #FF9500;
+  border-radius: 14px;
+  padding: 30px;
+  color: #fff;
+
+  margin: 0 auto;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+/* ===== ТВОИ СТИЛИ БЕЗ ИЗМЕНЕНИЙ ===== */
+
+.hero {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.chat-box {
+  margin-bottom: 20px;
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.chat-box input,
+.chat-box button {
+  width: 100%;
+}
+
+#chat {
+  min-height: 80px;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 12px;
+  background: #FF9500;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+a {
+  color: #00ccff;
+}
+
+</style>
 
 </head>
 
@@ -191,6 +220,7 @@ async function sendToWorker() {
 
    </body>
   </html>
+
 
 
 
