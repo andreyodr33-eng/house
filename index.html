@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!menuContainer) return;
 
   const sheetUrl = 'https://opensheet.elk.sh/1PAi1zXz-S8jXxkUJHSeR22rrm6eyjjIkks_kyZ0vSgY/PizzaMenu';
-
+renderMenu(backupMenu);
   fetch(sheetUrl)
     .then(res => res.json())
     .then(menu => {
@@ -585,6 +585,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
