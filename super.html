@@ -163,9 +163,14 @@ const nextBtn = document.getElementById("nextBtn");
 
 
 // Показываем первый вопрос
-function showQuestion() {
-  chat.innerHTML += `<div class="bot"><strong>${questions[step]}</strong></div>`;
- 
+  function showQuestion() {
+  let questionText = questions[step];
+
+  if (answers.length > 0) {
+    questionText = questionText.replace("{name}", answers[0]);
+  }
+
+  chat.innerHTML += <div class="bot"><strong>${questionText}</strong></div>;
 }
 
 // Следующий шаг
