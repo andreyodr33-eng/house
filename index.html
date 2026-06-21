@@ -340,16 +340,16 @@ request.onsuccess = function(e){
 
      function deleteWord(id){
 
-    const tx =
-        db.transaction("words","readwrite");
+    const tx = db.transaction("words","readwrite");
+    const store = tx.objectStore("words");
+    const red = store.delete(id);
+    req.onsuccess = () => {
+       loadHistory();
 
-    const store =
-        tx.objectStore("words");
+    //store.delete(id);
 
-    store.delete(id);
-
-    tx.oncomplete = ()=>{
-        loadWordsAndStart();
+   // tx.oncomplete = ()=>{
+       // loadWordsAndStart();
     };
 } 
 
@@ -481,18 +481,14 @@ function addWord(){
       }
       function loadHistory(){
 
-    const tx =
-        db.transaction("words","readonly");
-
-    const store =
-        tx.objectStore("words");
+    const tx = db.transaction("words","readonly");
+    const store = tx.objectStore("words");
 
     const req = store.getAll();
 
     req.onsuccess = () => {
 
-        const panel =
-            document.getElementById("historyPanel");
+        const panel = document.getElementById("historyPanel");
 
         panel.innerHTML = "";
 
@@ -513,8 +509,7 @@ function addWord(){
       document.getElementById("historyBtn")
       .addEventListener("click", () => {
 
-      const panel =
-          document.getElementById("historyPanel");
+      const panel = document.getElementById("historyPanel");
 
       if(panel.classList.contains("hidden")){
 
