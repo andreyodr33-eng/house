@@ -306,6 +306,7 @@ request.onsuccess = function(e){
     card.onclick = () => selectLeft(card);
 
     leftCol.appendChild(card);
+    fitText(card);
 });
    
 
@@ -333,6 +334,7 @@ request.onsuccess = function(e){
         card.onclick = () => selectRight(card);
 
         rightCol.appendChild(card);
+        fitText(card);
     });
  }
 
@@ -391,9 +393,7 @@ request.onsuccess = function(e){
     };
  }
       
-
-      
-     function speak(text){
+   function speak(text){
     const utterance = new SpeechSynthesisUtterance(text);
 
     utterance.lang = "en-US";
@@ -418,7 +418,7 @@ request.onsuccess = function(e){
     card.style.fontSize = size + "px";
 
     while(
-        card.scrollWidth > card.clientWidth &&
+        card.scrollHeight > card.clientHeight &&
         size > 12
     ){
         size--;
