@@ -373,14 +373,32 @@ request.onsuccess = function(e){
 
       function showNextRound(){
 
-       const roundWords =
-          allWords.slice(
-             currentIndex,
-             currentIndex + WORDS_PER_ROUND
+    if(currentIndex >= allWords.length){
+        allWords = shuffle(allWords);
+        currentIndex = 0;
+    }
+
+    let roundWords =
+        allWords.slice(
+            currentIndex,
+            currentIndex + WORDS_PER_ROUND
         );
 
+    // 👉 если не хватает до 5 — добираем с начала
+    if(roundWords.length < WORDS_PER_ROUND){
+
+        const missing =
+            WORDS_PER_ROUND - roundWords.length;
+
+        roundWords = roundWords.concat(
+            allWords.slice(0, missing)
+        );
+    }
+
+    currentIndex += WORDS_PER_ROUND;
+
     startGame(roundWords);
-  }
+}
       function getCustomWords(callback){
 
       const tx = db.transaction("words", "readonly");
