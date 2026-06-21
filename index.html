@@ -342,14 +342,9 @@ request.onsuccess = function(e){
 
     const tx = db.transaction("words","readwrite");
     const store = tx.objectStore("words");
-    const red = store.delete(id);
-    req.onsuccess = () => {
-       loadHistory();
-
-    //store.delete(id);
-
-   // tx.oncomplete = ()=>{
-       // loadWordsAndStart();
+    store.delete(id);
+    tx.oncomplete = ()=>{
+        loadWordsAndStart();
     };
 } 
 
