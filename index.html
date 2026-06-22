@@ -501,7 +501,10 @@ function addWord(){
 
             div.textContent =
                 `${word.ru} — ${word.en}`;
-
+            // озвучка по тапу
+         div.addEventListener("click", () => {
+            speak(word.en); //английская озвучка
+         });
             panel.appendChild(div);
         });
     };
