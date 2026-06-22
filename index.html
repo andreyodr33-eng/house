@@ -187,9 +187,11 @@
     padding: 12px;
     border-bottom: 1px solid #eee;
 }
-   .history-item {
-      transition: transform 0.15s, opacity 0.15s;
-}    
+ .history-item:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  }   
  .history-item:active {
    transform: scale(0.98);
    opacity: 0.7;
