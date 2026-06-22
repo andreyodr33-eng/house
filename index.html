@@ -282,7 +282,11 @@ request.onsuccess = function(e){
 
     const card = document.createElement("div");
     card.className = "card";
-    card.textContent = word.ru;
+     if(currentMode === "reverse"){
+       card.textContent = word.en;
+    }else{
+       card.textContent = word.ru;
+    }
 
     card.dataset.id = word.id;
     card.dataset.en = word.en;
