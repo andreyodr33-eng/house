@@ -192,13 +192,23 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       background: linear-gradient(135deg, #ff758c, #ff7eb3);
 }   
-  
+.top { text-align: center; }
+.top-buttons { display: flex; justify-content: center; gap: 10px; margin-bottom: 10px; }
+.top-buttons button { width: 50px; height: 50px; padding: 0; border: none; border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-size: 22px;
+}  
     </style>
    <body>
     <div class="top">
+      <div class="top-buttons">
       <button id="modeBtn">👂</button>
       <button id="historyBtn">📜</button>
       <button onclick="addWord()">➕📦</button>
+      </div>  
     <div class="add-panel"> 
     <input id="ru" placeholder="Русский">
     <input id="en" placeholder="English">
