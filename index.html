@@ -621,7 +621,20 @@ function addWord(){
 
         loadWordsAndStart();
       });
-      
+       function shareCard() {
+              if (navigator.share) {
+                navigator
+                  .share({
+                    title: "My digital card",
+                    text: "Check out my digital business card:",
+                    url: window.location.href,
+                  })
+                  .then(() => console.log("Shared successfully"))
+                  .catch((err) => console.log("Share failed:", err));
+              } else {
+                alert("Sharing is not supported in this browser.");
+              }
+            }
       </script>
      <script>
       if ("serviceWorker" in navigator) {
