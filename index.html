@@ -192,16 +192,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       background: linear-gradient(135deg, #ff758c, #ff7eb3);
 }   
-  footer {
-    display: block;
-    text-align: center;
-    padding: 20px;
-}
-
-footer button {
-    padding: 10px 20px;
-    font-size: 18px;
-}
+  
     </style>
    <body>
     <div class="top">
@@ -218,11 +209,12 @@ footer button {
    <div class="game">
       <div class="column" id="leftColumn"></div>
       <div class="column" id="rightColumn"></div>
+       <button onclick="shareCard()">📤 share</button>
     </div>
      <div id="historyPanel" class="history hidden"></div>
-     <footer>
-      <button onclick="shareCard()">📤 share</button>
-     </footer>   
+     
+     
+        
 <script>
 
 let db;
