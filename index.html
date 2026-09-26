@@ -207,6 +207,12 @@
      font-size: 22px;
      border: 1px solid #999;
 }  
+    /* запрет масштабирования */        
+html,
+body {
+    touch-action: none;
+    overflow: hidden;
+}       
     </style>
    <body>
     <div class="top">
@@ -229,14 +235,7 @@
        <a href="javascript:void(0)" onclick="shareCard()">📤 share</a>
     </div>
      <div id="historyPanel" class="history hidden"></div>
-  /* запрет масштабирования */        
-html,
-body {
-    touch-action: none;
-    overflow: hidden;
-}       
-     
-        
+    
 <script>
 
 let db;
