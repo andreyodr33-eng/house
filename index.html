@@ -229,7 +229,12 @@
        <a href="javascript:void(0)" onclick="shareCard()">📤 share</a>
     </div>
      <div id="historyPanel" class="history hidden"></div>
-     
+  /* запрет масштабирования */        
+html,
+body {
+    touch-action: none;
+    overflow: hidden;
+}       
      
         
 <script>
